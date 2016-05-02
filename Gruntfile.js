@@ -48,17 +48,6 @@ module.exports = function(grunt) {
 		},
 
 	});
-	grunt.registerTask('set_arch',function() {
-		process.env['npm_config_target__arch'] = 'x64';
-		process.env['npm_config_target__platform'] = 'linux';
-		// var npm = require('npm');
-		// npm.load([],function() {
-
-		// 	npm.config.set('target_arch','x64');
-	 //        npm.config.set('target_platform','linux');
-		// });
-	});
-	grunt.registerTask('lambda_package_arch', [ 'set_arch', 'lambda_package' ]);
 	grunt.registerTask('deploy', [ 'env:prod', 'lambda_package', 'lambda_deploy']);
 	grunt.registerTask('test', ['lambda_invoke']);
 };
