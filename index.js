@@ -1,4 +1,5 @@
 var clustal = require('node-clustal');
 exports.clustal = function(event,context) {
-	context.succeed(clustal.clustalo({'foo' : 'MMM', 'bar' : 'MMMMM' },{}));
+	console.log(JSON.stringify(event));
+	context.succeed(clustal.clustalo(JSON.parse(event.sequences),{}));
 };
