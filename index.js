@@ -74,5 +74,5 @@ exports.clustal = function(event,context) {
   for(var i = 0; i <= max_idx; i++) {
     results.push(aligned_sequences['seq_'+i]);
   }
-	context.succeed( {'sequences' : results, 'alignment' : score_aligned(results) } );
+	context.succeed( {'data' : {'sequences' : results, 'alignment' : score_aligned(results) } });
 };
