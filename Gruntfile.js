@@ -31,9 +31,9 @@ module.exports = function(grunt) {
 				options: {
 					file_name: 'index.js',
 					handler: 'clustal',
+					region: config.region,
 				},
 				function: config.functions['clustal'] || 'clustal',
-        region: config.region,
 				arn: null,
 			}
 		},
