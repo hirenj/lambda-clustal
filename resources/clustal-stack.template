@@ -54,7 +54,7 @@
         "Description" : "clustal",
         "Handler" : "index.clustal",
         "Role" : {"Fn::GetAtt" : ["LambdaClustalRole", "Arn"] },
-        "Runtime" : "nodejs",
+        "Runtime" : "nodejs4.3",
         "MemorySize" : 128,
         "Timeout" : 20
       },
