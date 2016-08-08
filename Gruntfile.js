@@ -33,6 +33,7 @@ module.exports = function(grunt) {
 					handler: 'clustal',
 				},
 				function: config.functions['clustal'] || 'clustal',
+        region: config.region,
 				arn: null,
 			}
 		},
