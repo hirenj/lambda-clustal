@@ -63,10 +63,27 @@ module.exports = function(grunt) {
 	grunt.initConfig(config_options);
 
 	grunt.registerTask('saveRevision', function() {
-		grunt.event.once('git-describe', function (rev) {
-			grunt.option('gitRevision', rev);
-		});
-		grunt.task.run('git-describe');
+
+			var branch = 'mastera';
+			var done = this.async();
+
+			grunt.event.once('git-describe', function (rev) {
+				grunt.option('gitRevision', branch+'-'+rev);
+			});
+
+
+			grunt.util.spawn({
+        cmd: 'git',
+        args: ['symbolic-ref','--short','HEAD']
+      }, function (error, result) {
+          if (error) {
+            grunt.log.error([error]);
+          }
+          branch = result;
+					grunt.task.run('git-describe');
+          done();
+      });
+
 	});
 
 	grunt.registerMultiTask('lambda_checkversion','Check for version of lambda function',function(){
