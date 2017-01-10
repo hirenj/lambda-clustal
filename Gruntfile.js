@@ -141,6 +141,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('versioncheck',['saveRevision']);
 
-	grunt.registerTask('deploy', [ 'env:prod', 'versioncheck', 'lambda_checkversion', 'lambda_package', 'lambda_deploy','lambda_setversion']);
+	grunt.registerTask('deploy', [ 'env:prod', 'versioncheck', 'lambda_checkversion', 'force:lambda_package', 'force:lambda_deploy','force:lambda_setversion']);
 	grunt.registerTask('test', ['lambda_invoke']);
 };
