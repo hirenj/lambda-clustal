@@ -62,17 +62,18 @@ var score_aligned = function(sequences) {
 }
 
 exports.clustal = function(event,context) {
-	console.log(JSON.stringify(event));
+  console.log(JSON.stringify(event));
   var sequence_object = {};
   var max_idx = 0;
   (event.sequences || '').split(',').forEach(function(seq,idx) {
     sequence_object['seq_'+idx] = seq;
     max_idx = idx;
   });
-  var aligned_sequences = clustal.clustalo(sequence_object,{});
+
+  var aligned_sequences = clustal.clustalo(sequence_object,{sequenceType: clustal.SEQTYPE_PROTEIN });
   var results = [];
   for(var i = 0; i <= max_idx; i++) {
     results.push(aligned_sequences['seq_'+i]);
   }
-	context.succeed( {'data' : {'sequences' : results, 'alignment' : score_aligned(results) } });
+  context.succeed( {'data' : {'sequences' : results, 'alignment' : score_aligned(results) } });
 };
