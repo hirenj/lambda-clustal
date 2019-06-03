@@ -1,26 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Resources:
-  ClustalLogWriterPolicy:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: AuthLogWriterPolicy
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - logs:CreateLogGroup
-              - logs:CreateLogStream
-              - logs:PutLogEvents
-            Resource: arn:aws:logs:*:*:*
-      Roles:
-        - !Ref 'LambdaClustalRole'
-    DependsOn:
-      - LambdaClustalRole
   LambdaClustalRole:
     Type: AWS::IAM::Role
     Properties:
-      ManagedPolicyArns: []
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
