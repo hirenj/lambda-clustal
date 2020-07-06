@@ -1,0 +1,1 @@
+exports.clustal = require('../js/common').clustal;
