@@ -20,7 +20,7 @@ Resources:
       Description: clustal
       Handler: index.clustal
       Role: !GetAtt 'LambdaClustalRole.Arn'
-      Runtime: nodejs8.10
+      Runtime: !Ref nodejsversion
       MemorySize: 512
       Timeout: 20
     DependsOn: LambdaClustalRole
