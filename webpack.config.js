@@ -4,7 +4,7 @@ const ModuleInstaller = base_config.ModuleInstaller;
 
 config.plugins = [ new ModuleInstaller(['hirenj/node-clustal']) ].concat(config.plugins);
 
-config.externals.concat(
+config.externals = config.externals.concat(
   [{ 'node-clustal' : 'node-clustal' }
   ]
 )
