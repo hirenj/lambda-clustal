@@ -4,6 +4,8 @@
   "description": "Clustal Omega running in a lambda",
   "main": "index.js",
   "scripts": {
+    "build": "webpack-cli",
+    "deploy": "STACK=test AWS_REGION=us-east-1 ./node_modules/gator-webpack/scripts/deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,7 +19,6 @@
     "grunt-force-task": "^2.0.0",
     "grunt-git-describe": "^2.4.2",
     "load-grunt-tasks": "^3.5.0",
-    "npm": "^3.8.8",
     "gator-webpack" : "hirenj/gator-webpack"
   },
   "config": {
